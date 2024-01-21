@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter import ttk  # Importação adicional
+from tkinter import ttk, messagebox  # Importação adicional
 import customtkinter
 from tkinter import filedialog
 import openpyxl
@@ -57,6 +57,9 @@ def salvar_excel():
     file_path = filedialog.asksaveasfilename(defaultextension=".xlsx")
     if file_path:
         workbook.save(file_path)
+        messagebox.showinfo(
+            "Sucesso", "Arquivo Excel salvo com sucesso!"
+        )  # Mensagem de sucesso
 
 
 # Ajustes de centralização para o grid
@@ -79,21 +82,33 @@ produto_entry.grid(row=3, column=1, padx=10, pady=5)
 data_entry = customtkinter.CTkEntry(root, placeholder_text="Data")
 data_entry.grid(row=3, column=2, padx=10, pady=5)
 
-# Botão Adicionar
-add_button = customtkinter.CTkButton(root, text="Adicionar", command=adicionar_dados)
-add_button.grid(row=4, column=1, columnspan=1, padx=10, pady=5)
+# Botões estilizados
+add_button = customtkinter.CTkButton(
+    root,
+    text="Adicionar",
+    command=adicionar_dados,
+    fg_color="gray",
+    hover_color="gray20",
+)
+add_button.grid(row=4, column=1, padx=10, pady=10)
 
-# Botão para mostrar a tabela em uma nova janela
 botao_tabela = customtkinter.CTkButton(
-    root, text="Mostrar Tabela", command=mostrar_tabela
+    root,
+    text="Mostrar Tabela",
+    command=mostrar_tabela,
+    fg_color="gray",
+    hover_color="gray20",
 )
-botao_tabela.grid(row=4, column=2, columnspan=2, padx=10, pady=5)
+botao_tabela.grid(row=4, column=2, padx=10, pady=10)
 
-# Botão para salvar os dados em Excel
 save_button = customtkinter.CTkButton(
-    root, text="Salvar como Excel", command=salvar_excel
+    root,
+    text="Salvar como Excel",
+    command=salvar_excel,
+    fg_color="gray",
+    hover_color="gray20",
 )
-save_button.grid(row=6, column=1, columnspan=2, pady=10)
+save_button.grid(row=5, column=1, columnspan=2, pady=10)
 
 # Executa a aplicação
 root.mainloop()
