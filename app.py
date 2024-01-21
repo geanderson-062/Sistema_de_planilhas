@@ -5,10 +5,10 @@ from tkinter import filedialog
 import openpyxl
 
 # Configuração da janela Tkinter usando customtkinter
-root = customtkinter.CTk()
-root.geometry("1920x1080")
-root.title("Sistema de Planilhas")
-root.resizable(False, False)
+root = customtkinter.CTk()  # criando janela principal
+root.geometry("800x600")  # tamanho da janela
+root.title("Sistema de Planilhas")  # titulo da janela
+root.resizable(False, False)  # trava o tamanho das janelas em 800x600
 
 # Definindo o tema
 customtkinter.set_appearance_mode("dark")
@@ -30,12 +30,13 @@ def adicionar_dados():
 
 def mostrar_tabela():
     # Cria uma nova janela
-    janela_tabela = customtkinter.CTkToplevel(root)
-    janela_tabela.geometry("800x600")
-    janela_tabela.title("Dados Adicionados")
+    janela_tabela = customtkinter.CTkToplevel(root)  # criando janela secundaria
+    janela_tabela.geometry("800x600")  # tamanho da janela
+    janela_tabela.title("Dados Adicionados")  # titulo da janela
+    janela_tabela.resizable(False, False)  # trava o tamanho das janelas em 800x600
 
     # Criando a tabela na nova janela
-    colunas = ("ID", "Cliente", "Produto", "Data")
+    colunas = ("ID", "Cliente", "Produto", "Data")  # coluna / cabeçalho
     tabela = ttk.Treeview(janela_tabela, columns=colunas, show="headings")
     for col in colunas:
         tabela.heading(col, text=col)
